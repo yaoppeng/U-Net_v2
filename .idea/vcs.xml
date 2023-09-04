@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../3D-Convs-for-MRI-Classification" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../DK_Topology_PCR" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../DconnNet" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../EGE-UNet" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../MRI_AI" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../Polyp-PVT" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../RetiFluidNet" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../UACANet" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../segmentation_models.pytorch" vcs="Git" />
+  </component>
+</project>

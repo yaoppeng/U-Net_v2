@@ -1,0 +1,34 @@
+`fused_weight_gradient_mlp_cuda` module not found. gradient accumulation fusion with weight gradient computation disabled.
+wandb: Currently logged in as: ianben. Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /afs/crc.nd.edu/user/y/ypeng4/.netrc
+wandb: wandb version 0.15.9 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.4
+wandb: Run data is saved locally in /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset122_ISIC2017/ISICTrainer__nnUNetPlans__2d/456319_my_unet_FusedMBConv_16/fold_0/wandb/run-20230901_235456-57g54l1t
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Resuming run PVTNetwork_1_456319_0_lr_0.001
+wandb: ⭐️ View project at https://wandb.ai/ianben/isic_0
+wandb: 🚀 View run at https://wandb.ai/ianben/isic_0/runs/57g54l1t
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.000 MB of 0.000 MB uploaded (0.000 MB deduped)wandb: \ 0.000 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: | 0.096 MB of 0.096 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb: loss/train_loss ▅█▇▅▇▄▄▇▄▇▄▅▅▁▂▃▄
+wandb:   loss/val_loss ▁█▅▇▆▃▂▃▃▄▅▅█▂▁▂▂
+wandb:        test/acc ▇▅▁▆▅▅▅█▅▄▄▆▄▆▄▃▄
+wandb:        test/dsc ▇▅▁█▅▆▅█▄▄▅▇▅▆▃▅▄
+wandb:       test/miou ▇▅▁█▅▆▅█▄▄▅▇▅▆▃▅▄
+wandb:        test/sen ▅▃▅█▄▇▅▃▁▄▅▅▅▃▃▇▄
+wandb:        test/spe ▅▆▂▁▄▁▃██▄▃▄▃▆▅▁▄
+wandb: 
+wandb: Run summary:
+wandb: loss/train_loss -1.42494
+wandb:   loss/val_loss -1.13464
+wandb:        test/acc 0.96456
+wandb:        test/dsc 0.89386
+wandb:       test/miou 0.80809
+wandb:        test/sen 0.89098
+wandb:        test/spe 0.97936
+wandb: 
+wandb: 🚀 View run PVTNetwork_1_456319_0_lr_0.001 at: https://wandb.ai/ianben/isic_0/runs/57g54l1t
+wandb: Synced 3 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset122_ISIC2017/ISICTrainer__nnUNetPlans__2d/456319_my_unet_FusedMBConv_16/fold_0/wandb/run-20230901_235456-57g54l1t/logs

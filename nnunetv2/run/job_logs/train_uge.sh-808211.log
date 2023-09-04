@@ -1,0 +1,1324 @@
+wandb: Currently logged in as: ianben. Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /afs/crc.nd.edu/user/y/ypeng4/.netrc
+wandb: wandb version 0.15.8 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.4
+wandb: Run data is saved locally in /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset122_ISIC2017/nnUNetTrainer__nnUNetPlans__2d/fold_0/wandb/run-20230818_183233-5bbc7s3x
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run nnunet_808211_0_lr_0.005
+wandb: ⭐️ View project at https://wandb.ai/ianben/isic2017_2_0
+wandb: 🚀 View run at https://wandb.ai/ianben/isic2017_2_0/runs/5bbc7s3x
+OrderedDict([('self', <Parameter "self">), ('plans', <Parameter "plans: dict">), ('configuration', <Parameter "configuration: str">), ('fold', <Parameter "fold: int">), ('dataset_json', <Parameter "dataset_json: dict">), ('unpack_dataset', <Parameter "unpack_dataset: bool = True">), ('device', <Parameter "device: torch.device = device(type='cuda')">), ('debug', <Parameter "debug=True">), ('job_id', <Parameter "job_id=None">)])
+Using device: cuda:0
+==========================initial_lr: 0.005===========================
+===================debug: False===================
+2023-08-18 18:32:38.435952: I am training on qa-xp-001.crc.nd.edu
+2023-08-18 18:32:38.438592: output folder: /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset122_ISIC2017/nnUNetTrainer__nnUNetPlans__2d/fold_0
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+
+model: UNet(
+  (inc): inconv(
+    (conv1): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (conv2): FusedMBConv(
+      (conv3x3): ConvNormAct(
+        (conv): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (norm): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act): ReLU()
+      )
+      (se_block): SEBlock(
+        (squeeze): AdaptiveAvgPool2d(output_size=1)
+        (excitation): Sequential(
+          (0): Conv2d(64, 16, kernel_size=(1, 1), stride=(1, 1))
+          (1): ReLU()
+          (2): Conv2d(16, 64, kernel_size=(1, 1), stride=(1, 1))
+          (3): Sigmoid()
+        )
+      )
+      (pointwise): ConvNormAct(
+        (conv): Conv2d(64, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (norm): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act): Identity()
+      )
+      (drop_path): DropPath()
+      (shortcut): Sequential()
+    )
+  )
+  (down1): down_block(
+    (conv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(64, 16, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(16, 64, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential(
+          (0): ConvNormAct(
+            (conv): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (norm): Identity()
+            (act): Identity()
+          )
+        )
+      )
+      (2): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(128, 32, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(32, 128, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(128, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential()
+      )
+    )
+  )
+  (down2): down_block(
+    (conv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(128, 32, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(32, 128, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential(
+          (0): ConvNormAct(
+            (conv): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (norm): Identity()
+            (act): Identity()
+          )
+        )
+      )
+      (2): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential()
+      )
+    )
+  )
+  (down3): down_block(
+    (conv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential(
+          (0): ConvNormAct(
+            (conv): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (norm): Identity()
+            (act): Identity()
+          )
+        )
+      )
+      (2): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(128, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential()
+      )
+    )
+  )
+  (down4): down_block(
+    (conv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(128, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential(
+          (0): ConvNormAct(
+            (conv): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (norm): Identity()
+            (act): Identity()
+          )
+        )
+      )
+      (2): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(256, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential()
+      )
+    )
+  )
+  (down5): down_block(
+    (conv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(256, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(1024, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential(
+          (0): ConvNormAct(
+            (conv): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (norm): Identity()
+            (act): Identity()
+          )
+        )
+      )
+      (2): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(512, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential()
+      )
+    )
+  )
+  (down6): down_block(
+    (conv): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(512, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential()
+      )
+      (2): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(512, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential()
+      )
+    )
+  )
+  (up0_0): up_block(
+    (conv_ch): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1))
+    (conv): Sequential(
+      (0): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(1024, 4096, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(4096, 1024, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(1024, 4096, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(4096, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(4096, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential(
+          (0): ConvNormAct(
+            (conv): Conv2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (norm): Identity()
+            (act): Identity()
+          )
+        )
+      )
+      (1): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(512, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential()
+      )
+    )
+  )
+  (up0): up_block(
+    (conv_ch): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+    (conv): Sequential(
+      (0): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(512, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(2048, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential(
+          (0): ConvNormAct(
+            (conv): Conv2d(512, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (norm): Identity()
+            (act): Identity()
+          )
+        )
+      )
+      (1): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(256, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential()
+      )
+    )
+  )
+  (up1): up_block(
+    (conv_ch): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+    (conv): Sequential(
+      (0): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(256, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(1024, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential(
+          (0): ConvNormAct(
+            (conv): Conv2d(256, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (norm): Identity()
+            (act): Identity()
+          )
+        )
+      )
+      (1): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(128, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential()
+      )
+    )
+  )
+  (up2): up_block(
+    (conv_ch): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+    (conv): Sequential(
+      (0): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(128, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(512, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential(
+          (0): ConvNormAct(
+            (conv): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (norm): Identity()
+            (act): Identity()
+          )
+        )
+      )
+      (1): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential()
+      )
+    )
+  )
+  (up3): up_block(
+    (conv_ch): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+    (conv): Sequential(
+      (0): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(256, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential(
+          (0): ConvNormAct(
+            (conv): Conv2d(64, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (norm): Identity()
+            (act): Identity()
+          )
+        )
+      )
+      (1): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(128, 32, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(32, 128, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(128, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential()
+      )
+    )
+  )
+  (up4): up_block(
+    (conv_ch): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1))
+    (conv): Sequential(
+      (0): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(128, 32, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(32, 128, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(128, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential(
+          (0): ConvNormAct(
+            (conv): Conv2d(32, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (norm): Identity()
+            (act): Identity()
+          )
+        )
+      )
+      (1): FusedMBConv(
+        (conv3x3): ConvNormAct(
+          (conv): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (norm): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): ReLU()
+        )
+        (se_block): SEBlock(
+          (squeeze): AdaptiveAvgPool2d(output_size=1)
+          (excitation): Sequential(
+            (0): Conv2d(64, 16, kernel_size=(1, 1), stride=(1, 1))
+            (1): ReLU()
+            (2): Conv2d(16, 64, kernel_size=(1, 1), stride=(1, 1))
+            (3): Sigmoid()
+          )
+        )
+        (pointwise): ConvNormAct(
+          (conv): Conv2d(64, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (norm): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (act): Identity()
+        )
+        (drop_path): DropPath()
+        (shortcut): Sequential()
+      )
+    )
+  )
+  (outc): Conv2d(16, 2, kernel_size=(1, 1), stride=(1, 1))
+  (seg_layers): ModuleList(
+    (0): Conv2d(512, 2, kernel_size=(1, 1), stride=(1, 1))
+    (1): Conv2d(256, 2, kernel_size=(1, 1), stride=(1, 1))
+    (2): Conv2d(128, 2, kernel_size=(1, 1), stride=(1, 1))
+    (3): Conv2d(64, 2, kernel_size=(1, 1), stride=(1, 1))
+    (4): Conv2d(32, 2, kernel_size=(1, 1), stride=(1, 1))
+    (5): Conv2d(16, 2, kernel_size=(1, 1), stride=(1, 1))
+  )
+)
+================================================UNet================================================
+
+This is the configuration used by this training:
+Configuration name: 2d
+ {'data_identifier': 'nnUNetPlans_2d', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 49, 'patch_size': [256, 256], 'median_image_size_in_voxels': [256.0, 256.0], 'spacing': [1.0, 1.0], 'normalization_schemes': ['ZScoreNormalization', 'ZScoreNormalization', 'ZScoreNormalization'], 'use_mask_for_norm': [False, False, False], 'UNet_class_name': 'ResidualEncoderUNet', 'nnUNet_UNet': False, 'UNet_base_num_features': 32, 'n_conv_per_stage_encoder': [2, 2, 2, 2, 2, 2, 2], 'n_conv_per_stage_decoder': [2, 2, 2, 2, 2, 2], 'num_pool_per_axis': [6, 6], 'pool_op_kernel_sizes': [[1, 1], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2], [2, 2]], 'conv_kernel_sizes': [[3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3], [3, 3]], 'unet_max_num_features': 512, 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'batch_dice': True} 
+
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset122_ISIC2017', 'plans_name': 'nnUNetPlans', 'original_median_spacing_after_transp': [999.0, 1.0, 1.0], 'original_median_shape_after_transp': [1, 256, 256], 'image_reader_writer': 'NaturalImage2DIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'ExperimentPlanner', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 255.0, 'mean': 160.1475372314453, 'median': 164.0, 'min': 0.0, 'percentile_00_5': 34.0, 'percentile_99_5': 252.0, 'std': 41.12111282348633}, '1': {'max': 255.0, 'mean': 111.18875122070312, 'median': 113.0, 'min': 0.0, 'percentile_00_5': 10.0, 'percentile_99_5': 222.0, 'std': 42.475669860839844}, '2': {'max': 255.0, 'mean': 91.16386413574219, 'median': 90.0, 'min': 0.0, 'percentile_00_5': 5.0, 'percentile_99_5': 207.0, 'std': 42.03706359863281}}} 
+
+2023-08-18 18:32:46.085638: unpacking dataset...
+2023-08-18 18:32:53.311028: unpacking done...
+2023-08-18 18:32:53.314362: do_dummy_2d_data_aug: False
+2023-08-18 18:32:53.331053: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 18:32:53.332874: The split file contains 1 splits.
+2023-08-18 18:32:53.333861: Desired fold for training: 0
+2023-08-18 18:32:53.334845: This split has 1500 training and 650 validation cases.
+==================batch size: 24==================
+2023-08-18 18:32:53.429904: Unable to plot network architecture:
+2023-08-18 18:32:53.431074: No module named 'hiddenlayer'
+2023-08-18 18:32:53.598719: 
+2023-08-18 18:32:53.600044: Epoch 0
+2023-08-18 18:32:53.601117: Current learning rate: 0.005
+2023-08-18 18:32:53.602244: start training, 250
+================num of epochs: 250================
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+using pin_memory on device 0
+2023-08-18 18:41:57.761441: finish training
+2023-08-18 18:41:57.995595: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 18:41:58.012239: The split file contains 1 splits.
+2023-08-18 18:41:58.013283: Desired fold for training: 0
+2023-08-18 18:41:58.014409: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 18:44:36.819420: dsc: 14.91%
+2023-08-18 18:44:36.821187: miou: 8.05%
+2023-08-18 18:44:36.822138: acc: 13.64%, sen: 45.16%, spe: 7.29%
+2023-08-18 18:44:36.824800: current best miou: 0.08053273407755943 at epoch: 0, (0, 0.08053273407755943, 0.14906116499341313)
+2023-08-18 18:44:36.825818: current best dsc: 0.14906116499341313 at epoch: 0, (0, 0.08053273407755943, 0.14906116499341313)
+2023-08-18 18:44:44.517185: finished real validation
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+using pin_memory on device 0
+2023-08-18 18:45:14.154429: train_loss 16.8052
+2023-08-18 18:45:14.156097: val_loss 185.3633
+2023-08-18 18:45:14.158453: Pseudo dice [0.1924]
+2023-08-18 18:45:14.159773: Epoch time: 740.56 s
+2023-08-18 18:45:14.160872: Yayy! New best EMA pseudo Dice: 0.1924
+2023-08-18 18:45:25.202275: 
+2023-08-18 18:45:25.203619: Epoch 1
+2023-08-18 18:45:25.204712: Current learning rate: 0.00498
+2023-08-18 18:45:25.206153: start training, 250
+================num of epochs: 250================
+2023-08-18 18:54:20.757087: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 18:54:21.038821: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 18:54:21.041460: The split file contains 1 splits.
+2023-08-18 18:54:21.042678: Desired fold for training: 0
+2023-08-18 18:54:21.043886: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 18:57:03.019015: dsc: 73.32%
+2023-08-18 18:57:03.020720: miou: 57.87%
+2023-08-18 18:57:03.021662: acc: 89.58%, sen: 85.46%, spe: 90.41%
+2023-08-18 18:57:03.023781: current best miou: 0.5787236683903755 at epoch: 1, (1, 0.5787236683903755, 0.7331538507691173)
+2023-08-18 18:57:03.025473: current best dsc: 0.7331538507691173 at epoch: 1, (1, 0.5787236683903755, 0.7331538507691173)
+2023-08-18 18:57:10.694550: finished real validation
+2023-08-18 18:57:39.682567: train_loss 5.7549
+2023-08-18 18:57:39.684473: val_loss 1.507
+2023-08-18 18:57:39.686344: Pseudo dice [0.6649]
+2023-08-18 18:57:39.687435: Epoch time: 734.48 s
+2023-08-18 18:57:39.688589: Yayy! New best EMA pseudo Dice: 0.2397
+2023-08-18 18:57:51.852661: 
+2023-08-18 18:57:51.854042: Epoch 2
+2023-08-18 18:57:51.854972: Current learning rate: 0.00497
+2023-08-18 18:57:51.856309: start training, 250
+================num of epochs: 250================
+2023-08-18 19:06:46.780315: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 19:06:47.295459: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 19:06:47.297366: The split file contains 1 splits.
+2023-08-18 19:06:47.298282: Desired fold for training: 0
+2023-08-18 19:06:47.299090: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 19:09:29.607476: dsc: 81.19%
+2023-08-18 19:09:29.609251: miou: 68.34%
+2023-08-18 19:09:29.610364: acc: 93.45%, sen: 84.39%, spe: 95.27%
+2023-08-18 19:09:29.612952: current best miou: 0.6833713723475264 at epoch: 2, (2, 0.6833713723475264, 0.8119080359487624)
+2023-08-18 19:09:29.613936: current best dsc: 0.8119080359487624 at epoch: 2, (2, 0.6833713723475264, 0.8119080359487624)
+2023-08-18 19:09:37.586304: finished real validation
+2023-08-18 19:10:06.684546: train_loss 0.4668
+2023-08-18 19:10:06.686177: val_loss -0.151
+2023-08-18 19:10:06.687736: Pseudo dice [0.815]
+2023-08-18 19:10:06.688814: Epoch time: 734.84 s
+2023-08-18 19:10:06.689685: Yayy! New best EMA pseudo Dice: 0.2972
+2023-08-18 19:10:16.267172: 
+2023-08-18 19:10:16.268614: Epoch 3
+2023-08-18 19:10:16.269668: Current learning rate: 0.00495
+2023-08-18 19:10:16.271068: start training, 250
+================num of epochs: 250================
+2023-08-18 19:19:10.049029: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 19:19:10.296782: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 19:19:10.299423: The split file contains 1 splits.
+2023-08-18 19:19:10.300635: Desired fold for training: 0
+2023-08-18 19:19:10.301718: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 19:21:54.104495: dsc: 71.79%
+2023-08-18 19:21:54.106010: miou: 56.00%
+2023-08-18 19:21:54.106963: acc: 89.82%, sen: 77.35%, spe: 92.33%
+2023-08-18 19:21:54.108985: current best miou: 0.6833713723475264 at epoch: 2, (2, 0.6833713723475264, 0.8119080359487624)
+2023-08-18 19:21:54.110071: current best dsc: 0.8119080359487624 at epoch: 2, (2, 0.6833713723475264, 0.8119080359487624)
+2023-08-18 19:21:54.111032: finished real validation
+2023-08-18 19:22:23.045979: train_loss 0.2878
+2023-08-18 19:22:23.047856: val_loss 0.6218
+2023-08-18 19:22:23.049623: Pseudo dice [0.6492]
+2023-08-18 19:22:23.050874: Epoch time: 726.78 s
+2023-08-18 19:22:23.051928: Yayy! New best EMA pseudo Dice: 0.3324
+2023-08-18 19:22:32.148795: 
+2023-08-18 19:22:32.150176: Epoch 4
+2023-08-18 19:22:32.151191: Current learning rate: 0.00494
+2023-08-18 19:22:32.152630: start training, 250
+================num of epochs: 250================
+2023-08-18 19:31:27.224166: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 19:31:27.478515: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 19:31:27.481138: The split file contains 1 splits.
+2023-08-18 19:31:27.482409: Desired fold for training: 0
+2023-08-18 19:31:27.483431: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 19:34:07.270329: dsc: 81.11%
+2023-08-18 19:34:07.272103: miou: 68.23%
+2023-08-18 19:34:07.273133: acc: 93.61%, sen: 81.96%, spe: 95.95%
+2023-08-18 19:34:07.275357: current best miou: 0.6833713723475264 at epoch: 2, (2, 0.6833713723475264, 0.8119080359487624)
+2023-08-18 19:34:07.276430: current best dsc: 0.8119080359487624 at epoch: 2, (2, 0.6833713723475264, 0.8119080359487624)
+2023-08-18 19:34:07.277437: finished real validation
+2023-08-18 19:34:36.210514: train_loss -0.0219
+2023-08-18 19:34:36.212163: val_loss -0.0998
+2023-08-18 19:34:36.213931: Pseudo dice [0.7923]
+2023-08-18 19:34:36.215147: Epoch time: 724.06 s
+2023-08-18 19:34:36.216082: Yayy! New best EMA pseudo Dice: 0.3784
+2023-08-18 19:34:45.646859: 
+2023-08-18 19:34:45.648535: Epoch 5
+2023-08-18 19:34:45.649823: Current learning rate: 0.00492
+2023-08-18 19:34:45.651312: start training, 250
+================num of epochs: 250================
+2023-08-18 19:43:39.296212: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 19:43:39.554427: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 19:43:39.557508: The split file contains 1 splits.
+2023-08-18 19:43:39.558687: Desired fold for training: 0
+2023-08-18 19:43:39.559804: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 19:46:22.264901: dsc: 82.21%
+2023-08-18 19:46:22.266325: miou: 69.79%
+2023-08-18 19:46:22.267473: acc: 94.38%, sen: 77.53%, spe: 97.77%
+2023-08-18 19:46:22.269767: current best miou: 0.6979174959535008 at epoch: 5, (5, 0.6979174959535008, 0.8220864648804043)
+2023-08-18 19:46:22.270955: current best dsc: 0.8220864648804043 at epoch: 5, (5, 0.6979174959535008, 0.8220864648804043)
+2023-08-18 19:46:30.237295: finished real validation
+2023-08-18 19:46:59.175498: train_loss -0.2804
+2023-08-18 19:46:59.177512: val_loss -0.1295
+2023-08-18 19:46:59.179341: Pseudo dice [0.8183]
+2023-08-18 19:46:59.180760: Epoch time: 733.53 s
+2023-08-18 19:46:59.182004: Yayy! New best EMA pseudo Dice: 0.4224
+2023-08-18 19:47:09.450353: 
+2023-08-18 19:47:09.451930: Epoch 6
+2023-08-18 19:47:09.452999: Current learning rate: 0.00491
+2023-08-18 19:47:09.454648: start training, 250
+================num of epochs: 250================
+2023-08-18 19:56:01.251552: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 19:56:01.512893: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 19:56:01.515567: The split file contains 1 splits.
+2023-08-18 19:56:01.516800: Desired fold for training: 0
+2023-08-18 19:56:01.517835: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 19:58:43.636294: dsc: 81.78%
+2023-08-18 19:58:43.638223: miou: 69.17%
+2023-08-18 19:58:43.639335: acc: 94.28%, sen: 76.62%, spe: 97.83%
+2023-08-18 19:58:43.641897: current best miou: 0.6979174959535008 at epoch: 5, (5, 0.6979174959535008, 0.8220864648804043)
+2023-08-18 19:58:43.643004: current best dsc: 0.8220864648804043 at epoch: 5, (5, 0.6979174959535008, 0.8220864648804043)
+2023-08-18 19:58:43.644049: finished real validation
+2023-08-18 19:59:12.506303: train_loss -0.3458
+2023-08-18 19:59:12.508270: val_loss -0.2474
+2023-08-18 19:59:12.510015: Pseudo dice [0.7642]
+2023-08-18 19:59:12.511142: Epoch time: 723.06 s
+2023-08-18 19:59:12.512339: Yayy! New best EMA pseudo Dice: 0.4565
+2023-08-18 19:59:21.539201: 
+2023-08-18 19:59:21.540670: Epoch 7
+2023-08-18 19:59:21.541823: Current learning rate: 0.00489
+2023-08-18 19:59:21.543442: start training, 250
+================num of epochs: 250================
+2023-08-18 20:08:14.038664: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 20:08:14.306353: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 20:08:14.309823: The split file contains 1 splits.
+2023-08-18 20:08:14.311151: Desired fold for training: 0
+2023-08-18 20:08:14.312346: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 20:10:57.142535: dsc: 83.66%
+2023-08-18 20:10:57.144670: miou: 71.91%
+2023-08-18 20:10:57.145771: acc: 94.89%, sen: 78.04%, spe: 98.28%
+2023-08-18 20:10:57.148147: current best miou: 0.719068811166414 at epoch: 7, (7, 0.719068811166414, 0.8365794393983741)
+2023-08-18 20:10:57.149690: current best dsc: 0.8365794393983741 at epoch: 7, (7, 0.719068811166414, 0.8365794393983741)
+2023-08-18 20:11:05.505828: finished real validation
+2023-08-18 20:11:34.367569: train_loss -0.531
+2023-08-18 20:11:34.369794: val_loss -0.552
+2023-08-18 20:11:34.372127: Pseudo dice [0.8254]
+2023-08-18 20:11:34.373479: Epoch time: 732.83 s
+2023-08-18 20:11:34.374461: Yayy! New best EMA pseudo Dice: 0.4934
+2023-08-18 20:11:43.740102: 
+2023-08-18 20:11:43.741527: Epoch 8
+2023-08-18 20:11:43.742575: Current learning rate: 0.00488
+2023-08-18 20:11:43.744159: start training, 250
+================num of epochs: 250================
+2023-08-18 20:20:37.939805: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 20:20:38.208721: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 20:20:38.211852: The split file contains 1 splits.
+2023-08-18 20:20:38.213055: Desired fold for training: 0
+2023-08-18 20:20:38.214317: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 20:23:20.294932: dsc: 83.90%
+2023-08-18 20:23:20.296712: miou: 72.26%
+2023-08-18 20:23:20.297709: acc: 94.78%, sen: 81.13%, spe: 97.53%
+2023-08-18 20:23:20.300034: current best miou: 0.7225833237423327 at epoch: 8, (8, 0.7225833237423327, 0.8389531162678527)
+2023-08-18 20:23:20.301381: current best dsc: 0.8389531162678527 at epoch: 8, (8, 0.7225833237423327, 0.8389531162678527)
+2023-08-18 20:23:28.161387: finished real validation
+2023-08-18 20:23:56.904000: train_loss -0.6412
+2023-08-18 20:23:56.905824: val_loss -0.6166
+2023-08-18 20:23:56.907531: Pseudo dice [0.8324]
+2023-08-18 20:23:56.908716: Epoch time: 733.17 s
+2023-08-18 20:23:56.909878: Yayy! New best EMA pseudo Dice: 0.5273
+2023-08-18 20:24:06.198600: 
+2023-08-18 20:24:06.200282: Epoch 9
+2023-08-18 20:24:06.201428: Current learning rate: 0.00486
+2023-08-18 20:24:06.203078: start training, 250
+================num of epochs: 250================
+2023-08-18 20:33:00.058352: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 20:33:00.328895: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 20:33:00.331870: The split file contains 1 splits.
+2023-08-18 20:33:00.333132: Desired fold for training: 0
+2023-08-18 20:33:00.334340: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 20:35:43.462062: dsc: 85.38%
+2023-08-18 20:35:43.463793: miou: 74.49%
+2023-08-18 20:35:43.464946: acc: 95.42%, sen: 79.84%, spe: 98.56%
+2023-08-18 20:35:43.467227: current best miou: 0.7449445953041194 at epoch: 9, (9, 0.7449445953041194, 0.8538318033808815)
+2023-08-18 20:35:43.468279: current best dsc: 0.8538318033808815 at epoch: 9, (9, 0.7449445953041194, 0.8538318033808815)
+2023-08-18 20:35:51.280969: finished real validation
+2023-08-18 20:36:20.160328: train_loss -0.6993
+2023-08-18 20:36:20.162298: val_loss -0.6371
+2023-08-18 20:36:20.163974: Pseudo dice [0.8414]
+2023-08-18 20:36:20.165121: Epoch time: 733.96 s
+2023-08-18 20:36:20.166270: Yayy! New best EMA pseudo Dice: 0.5587
+2023-08-18 20:36:29.610883: 
+2023-08-18 20:36:29.612557: Epoch 10
+2023-08-18 20:36:29.613677: Current learning rate: 0.00485
+2023-08-18 20:36:29.615171: start training, 250
+================num of epochs: 250================
+2023-08-18 20:45:23.576886: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 20:45:23.852085: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 20:45:23.855136: The split file contains 1 splits.
+2023-08-18 20:45:23.856698: Desired fold for training: 0
+2023-08-18 20:45:23.858447: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 20:48:07.008370: dsc: 85.67%
+2023-08-18 20:48:07.010409: miou: 74.94%
+2023-08-18 20:48:07.011529: acc: 95.46%, sen: 80.98%, spe: 98.38%
+2023-08-18 20:48:07.013945: current best miou: 0.7493861110718417 at epoch: 10, (10, 0.7493861110718417, 0.8567418094027235)
+2023-08-18 20:48:07.015089: current best dsc: 0.8567418094027235 at epoch: 10, (10, 0.7493861110718417, 0.8567418094027235)
+2023-08-18 20:48:15.199427: finished real validation
+2023-08-18 20:48:43.865557: train_loss -0.7489
+2023-08-18 20:48:43.867244: val_loss -0.6765
+2023-08-18 20:48:43.868837: Pseudo dice [0.8519]
+2023-08-18 20:48:43.870031: Epoch time: 734.26 s
+2023-08-18 20:48:43.870984: Yayy! New best EMA pseudo Dice: 0.588
+2023-08-18 20:48:53.317197: 
+2023-08-18 20:48:53.319148: Epoch 11
+2023-08-18 20:48:53.320276: Current learning rate: 0.00483
+2023-08-18 20:48:53.322243: start training, 250
+================num of epochs: 250================
+2023-08-18 20:57:54.019657: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 20:57:54.301771: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 20:57:54.304638: The split file contains 1 splits.
+2023-08-18 20:57:54.305828: Desired fold for training: 0
+2023-08-18 20:57:54.307137: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 21:00:37.571630: dsc: 86.86%
+2023-08-18 21:00:37.573848: miou: 76.78%
+2023-08-18 21:00:37.574980: acc: 95.71%, sen: 84.77%, spe: 97.91%
+2023-08-18 21:00:37.577451: current best miou: 0.7677648575531268 at epoch: 11, (11, 0.7677648575531268, 0.8686278090354596)
+2023-08-18 21:00:37.578712: current best dsc: 0.8686278090354596 at epoch: 11, (11, 0.7677648575531268, 0.8686278090354596)
+2023-08-18 21:00:45.327658: finished real validation
+2023-08-18 21:01:14.110456: train_loss -0.7739
+2023-08-18 21:01:14.112422: val_loss -0.6872
+2023-08-18 21:01:14.114324: Pseudo dice [0.8617]
+2023-08-18 21:01:14.115541: Epoch time: 740.8 s
+2023-08-18 21:01:14.116671: Yayy! New best EMA pseudo Dice: 0.6154
+2023-08-18 21:01:23.511795: 
+2023-08-18 21:01:23.513338: Epoch 12
+2023-08-18 21:01:23.514385: Current learning rate: 0.00482
+2023-08-18 21:01:23.516076: start training, 250
+================num of epochs: 250================
+2023-08-18 21:10:19.381704: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 21:10:19.930418: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 21:10:19.932861: The split file contains 1 splits.
+2023-08-18 21:10:19.933967: Desired fold for training: 0
+2023-08-18 21:10:19.934950: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 21:13:02.445015: dsc: 86.41%
+2023-08-18 21:13:02.446743: miou: 76.07%
+2023-08-18 21:13:02.447820: acc: 95.58%, sen: 83.97%, spe: 97.91%
+2023-08-18 21:13:02.450234: current best miou: 0.7677648575531268 at epoch: 11, (11, 0.7677648575531268, 0.8686278090354596)
+2023-08-18 21:13:02.451222: current best dsc: 0.8686278090354596 at epoch: 11, (11, 0.7677648575531268, 0.8686278090354596)
+2023-08-18 21:13:02.452208: finished real validation
+2023-08-18 21:13:31.327964: train_loss -0.7805
+2023-08-18 21:13:31.329925: val_loss -0.7155
+2023-08-18 21:13:31.331630: Pseudo dice [0.8762]
+2023-08-18 21:13:31.332859: Epoch time: 727.82 s
+2023-08-18 21:13:31.333908: Yayy! New best EMA pseudo Dice: 0.6415
+2023-08-18 21:13:40.557057: 
+2023-08-18 21:13:40.558645: Epoch 13
+2023-08-18 21:13:40.559730: Current learning rate: 0.0048
+2023-08-18 21:13:40.561211: start training, 250
+================num of epochs: 250================
+2023-08-18 21:22:36.643116: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 21:22:36.920527: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 21:22:36.923753: The split file contains 1 splits.
+2023-08-18 21:22:36.924902: Desired fold for training: 0
+2023-08-18 21:22:36.925935: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 21:25:21.029893: dsc: 85.48%
+2023-08-18 21:25:21.031851: miou: 74.64%
+2023-08-18 21:25:21.032938: acc: 95.48%, sen: 79.42%, spe: 98.71%
+2023-08-18 21:25:21.035136: current best miou: 0.7677648575531268 at epoch: 11, (11, 0.7677648575531268, 0.8686278090354596)
+2023-08-18 21:25:21.036262: current best dsc: 0.8686278090354596 at epoch: 11, (11, 0.7677648575531268, 0.8686278090354596)
+2023-08-18 21:25:21.037324: finished real validation
+2023-08-18 21:25:50.127587: train_loss -0.8042
+2023-08-18 21:25:50.129692: val_loss -0.6776
+2023-08-18 21:25:50.131404: Pseudo dice [0.8536]
+2023-08-18 21:25:50.132663: Epoch time: 729.57 s
+2023-08-18 21:25:50.133721: Yayy! New best EMA pseudo Dice: 0.6627
+2023-08-18 21:25:59.413253: 
+2023-08-18 21:25:59.414886: Epoch 14
+2023-08-18 21:25:59.415995: Current learning rate: 0.00479
+2023-08-18 21:25:59.417562: start training, 250
+================num of epochs: 250================
+2023-08-18 21:34:57.015090: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 21:34:57.310121: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 21:34:57.312934: The split file contains 1 splits.
+2023-08-18 21:34:57.314173: Desired fold for training: 0
+2023-08-18 21:34:57.315358: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 21:37:50.093411: dsc: 86.99%
+2023-08-18 21:37:50.095386: miou: 76.98%
+2023-08-18 21:37:50.096421: acc: 95.82%, sen: 83.43%, spe: 98.31%
+2023-08-18 21:37:50.098902: current best miou: 0.7697500557334024 at epoch: 14, (14, 0.7697500557334024, 0.8698969136796102)
+2023-08-18 21:37:50.100085: current best dsc: 0.8698969136796102 at epoch: 14, (14, 0.7697500557334024, 0.8698969136796102)
+2023-08-18 21:37:57.973959: finished real validation
+2023-08-18 21:38:27.737295: train_loss -0.8073
+2023-08-18 21:38:27.739451: val_loss -0.6853
+2023-08-18 21:38:27.741302: Pseudo dice [0.8672]
+2023-08-18 21:38:27.742566: Epoch time: 748.33 s
+2023-08-18 21:38:27.743625: Yayy! New best EMA pseudo Dice: 0.6832
+2023-08-18 21:38:37.284235: 
+2023-08-18 21:38:37.285830: Epoch 15
+2023-08-18 21:38:37.286999: Current learning rate: 0.00477
+2023-08-18 21:38:37.288462: start training, 250
+================num of epochs: 250================
+2023-08-18 21:47:47.582060: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 21:47:47.879471: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 21:47:47.882336: The split file contains 1 splits.
+2023-08-18 21:47:47.883562: Desired fold for training: 0
+2023-08-18 21:47:47.884678: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 21:50:39.832868: dsc: 87.18%
+2023-08-18 21:50:39.834940: miou: 77.27%
+2023-08-18 21:50:39.835950: acc: 95.81%, sen: 85.10%, spe: 97.96%
+2023-08-18 21:50:39.838142: current best miou: 0.7726737171673443 at epoch: 15, (15, 0.7726737171673443, 0.8717607867532932)
+2023-08-18 21:50:39.839258: current best dsc: 0.8717607867532932 at epoch: 15, (15, 0.7726737171673443, 0.8717607867532932)
+2023-08-18 21:50:48.456911: finished real validation
+2023-08-18 21:51:18.179993: train_loss -0.8195
+2023-08-18 21:51:18.182013: val_loss -0.7139
+2023-08-18 21:51:18.183693: Pseudo dice [0.8709]
+2023-08-18 21:51:18.184905: Epoch time: 760.9 s
+2023-08-18 21:51:18.185919: Yayy! New best EMA pseudo Dice: 0.7019
+2023-08-18 21:51:27.850740: 
+2023-08-18 21:51:27.852280: Epoch 16
+2023-08-18 21:51:27.853346: Current learning rate: 0.00476
+2023-08-18 21:51:27.855001: start training, 250
+================num of epochs: 250================
+2023-08-18 22:00:36.490244: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 22:00:36.789771: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 22:00:36.792869: The split file contains 1 splits.
+2023-08-18 22:00:36.794161: Desired fold for training: 0
+2023-08-18 22:00:36.795355: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 22:03:27.946218: dsc: 87.85%
+2023-08-18 22:03:27.948542: miou: 78.34%
+2023-08-18 22:03:27.949678: acc: 96.13%, sen: 83.58%, spe: 98.65%
+2023-08-18 22:03:27.952130: current best miou: 0.7833599315247088 at epoch: 16, (16, 0.7833599315247088, 0.878521399608843)
+2023-08-18 22:03:27.953275: current best dsc: 0.878521399608843 at epoch: 16, (16, 0.7833599315247088, 0.878521399608843)
+2023-08-18 22:03:35.981136: finished real validation
+2023-08-18 22:04:05.939166: train_loss -0.8251
+2023-08-18 22:04:05.941136: val_loss -0.7095
+2023-08-18 22:04:05.942977: Pseudo dice [0.8668]
+2023-08-18 22:04:05.944536: Epoch time: 758.09 s
+2023-08-18 22:04:05.945711: Yayy! New best EMA pseudo Dice: 0.7184
+2023-08-18 22:04:15.427635: 
+2023-08-18 22:04:15.429294: Epoch 17
+2023-08-18 22:04:15.430568: Current learning rate: 0.00474
+2023-08-18 22:04:15.432296: start training, 250
+================num of epochs: 250================
+2023-08-18 22:13:26.168711: finish training
+/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/torch/autograd/__init__.py:200: UserWarning: upsample_bilinear2d_backward_out_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at ../aten/src/ATen/Context.cpp:71.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+2023-08-18 22:13:26.474880: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 22:13:26.477886: The split file contains 1 splits.
+2023-08-18 22:13:26.479178: Desired fold for training: 0
+2023-08-18 22:13:26.480451: This split has 1500 training and 650 validation cases.
+start computing score....
+2023-08-18 22:16:20.322927: dsc: 86.89%
+2023-08-18 22:16:20.325043: miou: 76.81%
+2023-08-18 22:16:20.326210: acc: 95.80%, sen: 82.97%, spe: 98.39%
+2023-08-18 22:16:20.328881: current best miou: 0.7833599315247088 at epoch: 16, (16, 0.7833599315247088, 0.878521399608843)
+2023-08-18 22:16:20.330029: current best dsc: 0.878521399608843 at epoch: 16, (16, 0.7833599315247088, 0.878521399608843)
+2023-08-18 22:16:20.331055: finished real validation
+2023-08-18 22:16:50.152031: train_loss -0.8244
+2023-08-18 22:16:50.154164: val_loss -0.7131
+2023-08-18 22:16:50.155935: Pseudo dice [0.874]
+2023-08-18 22:16:50.157138: Epoch time: 754.73 s
+2023-08-18 22:16:50.158184: Yayy! New best EMA pseudo Dice: 0.734
+2023-08-18 22:16:59.856506: 
+2023-08-18 22:16:59.858227: Epoch 18
+2023-08-18 22:16:59.859415: Current learning rate: 0.00473
+2023-08-18 22:16:59.861232: start training, 250
+================num of epochs: 250================
+2023-08-18 22:26:10.636787: finish training
+2023-08-18 22:26:10.931677: Using splits from existing split file: /tmp/ypeng4/preprocessed_data/Dataset122_ISIC2017/splits_final.json
+2023-08-18 22:26:10.934858: The split file contains 1 splits.
+2023-08-18 22:26:10.936141: Desired fold for training: 0
+2023-08-18 22:26:10.937356: This split has 1500 training and 650 validation cases.
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/.local/lib/python3.9/site-packages/PIL/ImageFile.py", line 249, in load
+    s = read(self.decodermaxblock)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.local/lib/python3.9/site-packages/PIL/PngImagePlugin.py", line 957, in load_read
+    cid, pos, length = self.png.read()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.local/lib/python3.9/site-packages/PIL/PngImagePlugin.py", line 179, in read
+    length = i32(s)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.local/lib/python3.9/site-packages/PIL/_binary.py", line 85, in i32be
+    return unpack_from(">I", c, o)[0]
+struct.error: unpack_from requires a buffer of at least 4 bytes for unpacking 4 bytes at offset 0 (actual buffer size is 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/imageio/plugins/pillow.py", line 669, in pil_try_read
+    im.getdata()[0]
+  File "/afs/crc.nd.edu/user/y/ypeng4/.local/lib/python3.9/site-packages/PIL/Image.py", line 1381, in getdata
+    self.load()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.local/lib/python3.9/site-packages/PIL/ImageFile.py", line 256, in load
+    raise OSError(msg) from e
+OSError: image file is truncated
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 293, in <module>
+    if __name__ == '__main__':
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 287, in run_training_entry
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 223, in run_training
+    if not only_run_validation:
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py", line 1344, in run_training
+    self.real_validation_isic()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py", line 1925, in real_validation_isic
+    results = Parallel(-1, prefer="threads")(delayed(get_score)(file_ref, file_pred, ref_reader, pred_reader)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.local/lib/python3.9/site-packages/joblib/parallel.py", line 1098, in __call__
+    self.retrieve()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.local/lib/python3.9/site-packages/joblib/parallel.py", line 975, in retrieve
+    self._output.extend(job.get(timeout=self.timeout))
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/multiprocessing/pool.py", line 771, in get
+    raise self._value
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/afs/crc.nd.edu/user/y/ypeng4/.local/lib/python3.9/site-packages/joblib/_parallel_backends.py", line 620, in __call__
+    return self.func(*args, **kwargs)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.local/lib/python3.9/site-packages/joblib/parallel.py", line 288, in __call__
+    return [func(*args, **kwargs)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.local/lib/python3.9/site-packages/joblib/parallel.py", line 288, in <listcomp>
+    return [func(*args, **kwargs)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py", line 1914, in get_score
+    seg_pred, seg_pred_dict = pred_reader.read_seg(file_pred)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/imageio/natural_image_reager_writer.py", line 62, in read_seg
+    return self.read_images((seg_fname, ))
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/imageio/natural_image_reager_writer.py", line 39, in read_images
+    npy_img = io.imread(f)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.local/lib/python3.9/site-packages/skimage/io/_io.py", line 53, in imread
+    img = call_plugin('imread', fname, plugin=plugin, **plugin_args)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.local/lib/python3.9/site-packages/skimage/io/manage_plugins.py", line 207, in call_plugin
+    return func(*args, **kwargs)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.local/lib/python3.9/site-packages/skimage/io/_plugins/imageio_plugin.py", line 15, in imread
+    return np.asarray(imageio_imread(*args, **kwargs))
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/imageio/core/functions.py", line 265, in imread
+    reader = read(uri, format, "i", **kwargs)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/imageio/core/functions.py", line 186, in get_reader
+    return format.get_reader(request)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/imageio/core/format.py", line 170, in get_reader
+    return self.Reader(self, request)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/imageio/core/format.py", line 221, in __init__
+    self._open(**self.request.kwargs.copy())
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/imageio/plugins/pillow.py", line 298, in _open
+    return PillowFormat.Reader._open(self, pilmode=pilmode, as_gray=as_gray)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/imageio/plugins/pillow.py", line 135, in _open
+    pil_try_read(self._im)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/imageio/plugins/pillow.py", line 680, in pil_try_read
+    raise ValueError(error_message)
+ValueError: Could not load "" 
+Reason: "image file is truncated"
+Please see documentation at: http://pillow.readthedocs.io/en/latest/installation.html#external-libraries
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb: - 0.004 MB of 0.004 MB uploaded (0.000 MB deduped)wandb: \ 0.004 MB of 0.004 MB uploaded (0.000 MB deduped)wandb: | 0.004 MB of 0.004 MB uploaded (0.000 MB deduped)wandb: / 0.004 MB of 0.004 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb: loss/train_loss █▄▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   loss/val_loss █▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:        test/acc ▁▇█▇██████████████
+wandb:        test/dsc ▁▇▇▆▇▇▇███████████
+wandb:       test/miou ▁▆▇▆▇▇▇▇▇█████████
+wandb:        test/sen ▁██▇▇▇▆▇▇▇▇██▇████
+wandb:        test/spe ▁▇████████████████
+wandb: 
+wandb: Run summary:
+wandb: loss/train_loss -0.82437
+wandb:   loss/val_loss -0.71313
+wandb:        test/acc 0.95804
+wandb:        test/dsc 0.86885
+wandb:       test/miou 0.76811
+wandb:        test/sen 0.82973
+wandb:        test/spe 0.98386
+wandb: 
+wandb: 🚀 View run nnunet_808211_0_lr_0.005 at: https://wandb.ai/ianben/isic2017_2_0/runs/5bbc7s3x
+wandb: Synced 5 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset122_ISIC2017/nnUNetTrainer__nnUNetPlans__2d/fold_0/wandb/run-20230818_183233-5bbc7s3x/logs
+Exception in thread Thread-7:
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/threading.py", line 950, in _bootstrap_inner
+    self.run()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/threading.py", line 888, in run
+    self._target(*self._args, **self._kwargs)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/batchgenerators/dataloading/nondet_multi_threaded_augmenter.py", line 125, in results_loop
+Exception in thread Thread-40    :
+raise e
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/batchgenerators/dataloading/nondet_multi_threaded_augmenter.py", line 103, in results_loop
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/threading.py", line 950, in _bootstrap_inner
+    raise RuntimeError("One or more background workers are no longer alive. Exiting. Please check the "
+RuntimeError: One or more background workers are no longer alive. Exiting. Please check the print statements above for the actual error message    
+self.run()
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/threading.py", line 888, in run
+    self._target(*self._args, **self._kwargs)
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/batchgenerators/dataloading/nondet_multi_threaded_augmenter.py", line 125, in results_loop
+    raise e
+  File "/afs/crc.nd.edu/user/y/ypeng4/.conda/envs/python39/lib/python3.9/site-packages/batchgenerators/dataloading/nondet_multi_threaded_augmenter.py", line 103, in results_loop
+    raise RuntimeError("One or more background workers are no longer alive. Exiting. Please check the "
+RuntimeError: One or more background workers are no longer alive. Exiting. Please check the print statements above for the actual error message

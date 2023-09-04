@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../3D-Convs-for-MRI-Classification/.idea/3D-Convs-for-MRI-Classification.iml" filepath="$PROJECT_DIR$/../3D-Convs-for-MRI-Classification/.idea/3D-Convs-for-MRI-Classification.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../BreastClassification/.idea/BreastClassification.iml" filepath="$PROJECT_DIR$/../BreastClassification/.idea/BreastClassification.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../CBIS-DDSM/.idea/CBIS-DDSM.iml" filepath="$PROJECT_DIR$/../CBIS-DDSM/.idea/CBIS-DDSM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../DK_Topology_PCR/.idea/DK_Topology_PCR.iml" filepath="$PROJECT_DIR$/../DK_Topology_PCR/.idea/DK_Topology_PCR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../DconnNet/.idea/DconnNet.iml" filepath="$PROJECT_DIR$/../DconnNet/.idea/DconnNet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../DukeBreastTumor/.idea/DukeBreastTumor.iml" filepath="$PROJECT_DIR$/../DukeBreastTumor/.idea/DukeBreastTumor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../EGE-UNet/.idea/EGE-UNet.iml" filepath="$PROJECT_DIR$/../EGE-UNet/.idea/EGE-UNet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../MRI_AI/.idea/MRI_AI.iml" filepath="$PROJECT_DIR$/../MRI_AI/.idea/MRI_AI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Polyp-PVT/.idea/Polyp-PVT.iml" filepath="$PROJECT_DIR$/../Polyp-PVT/.idea/Polyp-PVT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Polyp-PVT_2/.idea/Polyp-PVT_2.iml" filepath="$PROJECT_DIR$/../Polyp-PVT_2/.idea/Polyp-PVT_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../PraNet/.idea/PraNet.iml" filepath="$PROJECT_DIR$/../PraNet/.idea/PraNet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../RetiFluidNet/.idea/RetiFluidNet.iml" filepath="$PROJECT_DIR$/../RetiFluidNet/.idea/RetiFluidNet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Segmentation/.idea/Segmentation.iml" filepath="$PROJECT_DIR$/../Segmentation/.idea/Segmentation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../TopoClassification/.idea/TopoClassification.iml" filepath="$PROJECT_DIR$/../TopoClassification/.idea/TopoClassification.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../UACANet/.idea/UACANet.iml" filepath="$PROJECT_DIR$/../UACANet/.idea/UACANet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/nnUNet.iml" filepath="$PROJECT_DIR$/.idea/nnUNet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../UNetplus/UNetPlusPlus/pytorch/.idea/pytorch.iml" filepath="$PROJECT_DIR$/../UNetplus/UNetPlusPlus/pytorch/.idea/pytorch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../segmentation_models.pytorch/.idea/segmentation_models.pytorch.iml" filepath="$PROJECT_DIR$/../segmentation_models.pytorch/.idea/segmentation_models.pytorch.iml" />
+    </modules>
+  </component>
+</project>

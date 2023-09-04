@@ -1,0 +1,94 @@
+`fused_weight_gradient_mlp_cuda` module not found. gradient accumulation fusion with weight gradient computation disabled.
+wandb: Currently logged in as: ianben. Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /afs/crc.nd.edu/user/y/ypeng4/.netrc
+wandb: wandb version 0.15.9 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.4
+wandb: Run data is saved locally in /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset124_ISIC2018/ISICTrainer__nnUNetPlans__2d/458817_my_unet_FusedMBConv_16/fold_0/wandb/run-20230903_101215-fxxxls04
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run PVTUNetPlus_458817_0_lr_0.001
+wandb: ⭐️ View project at https://wandb.ai/ianben/Dataset124_0
+wandb: 🚀 View run at https://wandb.ai/ianben/Dataset124_0/runs/fxxxls04
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/multiprocessing/pool.py", line 51, in starmapstar
+    return list(itertools.starmap(args[0], args[1]))
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/inference/export_prediction.py", line 97, in export_prediction_from_logits
+    np.savez_compressed(output_file_truncated + '.npz', probabilities=probabilities_final)
+  File "<__array_function__ internals>", line 180, in savez_compressed
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/site-packages/numpy/lib/npyio.py", line 666, in savez_compressed
+    _savez(file, args, kwds, True)
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/site-packages/numpy/lib/npyio.py", line 703, in _savez
+    zipf.close()
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/zipfile.py", line 1841, in close
+    self._fpclose(fp)
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/zipfile.py", line 1941, in _fpclose
+    fp.close()
+TimeoutError: [Errno 110] Connection timed out
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 301, in <module>
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 295, in run_training_entry
+    args.job_id = "458821"
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 226, in run_training
+    nnunet_trainer.run_training(dataset_id=dataset_id)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/ISICTrainer.py", line 153, in run_training
+    self.real_validation_isic()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/ISICTrainer.py", line 333, in real_validation_isic
+    _ = [r.get() for r in results]
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/ISICTrainer.py", line 333, in <listcomp>
+    _ = [r.get() for r in results]
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/multiprocessing/pool.py", line 774, in get
+    raise self._value
+TimeoutError: [Errno 110] Connection timed out
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb: 
+wandb: Run history:
+wandb: loss/train_loss █▅▄▄▃▃▃▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   loss/val_loss ▁▁▃▃▄▄▄▄▅▃▄▅▅▆▅▆▄▅▅▆▆▅▇▆▅▆▇▆▆▅█▇▆▇▅▆█▇▆▆
+wandb:        test/acc ▃▇▁▄▃▄▅▅▅▆▇▅▆▅▆▆▇▆▆▇▇▇▇▇▇▇▆▇▇▇▇▆▇▆▇▇▆██▇
+wandb:        test/dsc ▃▆▁▄▃▄▄▅▅▆▆▅▆▅▆▆▆▆▆▆▇▇▆▇▇▇▆▇▇▇▇▆▇▆▇▇▆███
+wandb:       test/miou ▃▆▁▄▃▄▄▅▅▆▆▅▆▅▆▆▆▆▆▆▇▇▆▇▇▇▆▇▇▇▇▆▇▆▇▇▆███
+wandb:        test/sen ▇▂▅▁▅▅▃▇█▃▂▅▅▂▄▄▄▃▆▄▃▃▂▆▇▅▄▃▆▅▃▅▅▅▅▃▃▅▅▆
+wandb:        test/spe ▁█▁▇▃▃▆▃▂▇▇▄▅▆▆▆▆▇▄▆█▇█▅▄▆▆▇▅▆█▅▆▅▇▇▇▇▇▅
+wandb: 
+wandb: Run summary:
+wandb: loss/train_loss -1.45598
+wandb:   loss/val_loss -1.0674
+wandb:        test/acc 0.95623
+wandb:        test/dsc 0.91297
+wandb:       test/miou 0.83987
+wandb:        test/sen 0.91286
+wandb:        test/spe 0.9708
+wandb: 
+wandb: 🚀 View run PVTUNetPlus_458817_0_lr_0.001 at: https://wandb.ai/ianben/Dataset124_0/runs/fxxxls04
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset124_ISIC2018/ISICTrainer__nnUNetPlans__2d/458817_my_unet_FusedMBConv_16/fold_0/wandb/run-20230903_101215-fxxxls04/logs
+Exception in thread Thread-7 (results_loop):
+Traceback (most recent call last):
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/site-packages/batchgenerators/dataloading/nondet_multi_threaded_augmenter.py", line 125, in results_loop
+    raise e
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/site-packages/batchgenerators/dataloading/nondet_multi_threaded_augmenter.py", line 103, in results_loop
+    raise RuntimeError("One or more background workers are no longer alive. Exiting. Please check the "
+RuntimeError: One or more background workers are no longer alive. Exiting. Please check the print statements above for the actual error message
+Exception in thread Thread-40 (results_loop):
+Traceback (most recent call last):
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/site-packages/batchgenerators/dataloading/nondet_multi_threaded_augmenter.py", line 125, in results_loop
+    raise e
+  File "/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/site-packages/batchgenerators/dataloading/nondet_multi_threaded_augmenter.py", line 103, in results_loop
+    raise RuntimeError("One or more background workers are no longer alive. Exiting. Please check the "
+RuntimeError: One or more background workers are no longer alive. Exiting. Please check the print statements above for the actual error message
