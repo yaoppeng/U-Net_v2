@@ -30,3 +30,5 @@ run the training and testing using the following command:
 ```bash
 python /path/to/U-Net_v2/PolypSeg/Train.py
 ```
+
+for convience, the `U-Net v2` model file is copied to `./lib/UNet_v2.py`
