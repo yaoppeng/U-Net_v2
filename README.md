@@ -18,7 +18,7 @@ export nnUNet_results=/path/to/result_save_dir
 
 run the training and testing using the following command:
 ```bash
-python /path/to/UNet_v2/run/run_training.py dataset_id 2d 0 --no-debug -tr ISICTrainer --c
+python /path/to/U-Net_v2/run/run_training.py dataset_id 2d 0 --no-debug -tr ISICTrainer --c
 ```
 
 ### 2. Polyp segmentation
@@ -27,5 +27,5 @@ Download the training dataset from [google drive](https://drive.google.com/file/
 
 run the training and testing using the following command:
 ```bash
-python /path/to/UNet_v2/PolypSeg/Train.py
+python /path/to/U-Net_v2/PolypSeg/Train.py
 ```
