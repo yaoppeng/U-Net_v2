@@ -2,6 +2,8 @@
 
 ## Pytorch implement of UNet_v2: RETHINKING THE SKIP CONNECTION OF U-NET FOR MEDICAL IMAGE SEGMENTATION
 
+Please make sure you have installed all the packages with the correct versions as shown in requirements.txt. Most of the issues are caused by incompatible package versions.
+
 ### 1 ISIC segmentation
 
 Down the dataset from [google drive](https://drive.google.com/file/d/1XM10fmAXndVLtXWOt5G0puYSQyI2veWy/view?usp=sharing)
