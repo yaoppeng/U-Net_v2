@@ -1,4 +1,4 @@
-### nnUNet is GOAT, thanks for Fabian et.al for making pure U-Net great again. Simple is good.
+### nnUNet is GOAT, thanks for Fabian et.al for making pure U-Net great again. Less is more.
 
 ## Pytorch implement of UNet_v2
 
