@@ -1,4 +1,4 @@
-### nnUNet is GOAT, thanks for Fabian et.al for making pure U-Net great again. Less is more.
+### nnUNet is the GOAT! Thanks to Fabian et al. for making pure U-Net great again. Less is more.
 
 ## Pytorch implement of UNet_v2: RETHINKING THE SKIP CONNECTION OF U-NET FOR MEDICAL IMAGE SEGMENTATION
 
