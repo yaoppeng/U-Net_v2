@@ -1,3 +1,5 @@
+### nnUNet is GOAT, thanks for Fabian et.al for making pure U-Net great again. Simple is good.
+
 ## Pytorch implement of UNet_v2
 
 ### 1 ISIC segmentation
