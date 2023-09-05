@@ -1,7 +1,10 @@
 ### nnUNet is the GOAT! Thanks to Fabian et al. for making pure U-Net great again. Less is more.
 
-## Pytorch implement of UNet_v2: RETHINKING THE SKIP CONNECTION OF U-NET FOR MEDICAL IMAGE SEGMENTATION
+## Pytorch implement of U-Net v2: RETHINKING THE SKIP CONNECTION OF U-NET FOR MEDICAL IMAGE SEGMENTATION
 
+Please make sure you have installed all the packages with the correct versions as shown in requirements.txt. Most of the issues are caused by incompatible package versions.
+
+The pretrained PVT model: [google drive](https://drive.google.com/drive/folders/1xC5Opwu5Afz4xiK5O9v4NnQOZY0A9-2j?usp=sharing)
 ### 1 ISIC segmentation
 
 Down the dataset from [google drive](https://drive.google.com/file/d/1XM10fmAXndVLtXWOt5G0puYSQyI2veWy/view?usp=sharing)
@@ -16,7 +19,7 @@ export nnUNet_results=/path/to/result_save_dir
 
 run the training and testing using the following command:
 ```bash
-python /path/to/UNet_v2/run/run_training.py dataset_id 2d 0 --no-debug -tr ISICTrainer --c
+python /path/to/U-Net_v2/run/run_training.py dataset_id 2d 0 --no-debug -tr ISICTrainer --c
 ```
 
 ### 2. Polyp segmentation
@@ -25,5 +28,5 @@ Download the training dataset from [google drive](https://drive.google.com/file/
 
 run the training and testing using the following command:
 ```bash
-python /path/to/UNet_v2/PolypSeg/Train.py
+python /path/to/U-Net_v2/PolypSeg/Train.py
 ```
