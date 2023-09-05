@@ -1,6 +1,6 @@
 ### nnUNet is the GOAT! Thanks to Fabian et al. for making pure U-Net great again. Less is more.
 
-## Pytorch implement of U-Net_v2: RETHINKING THE SKIP CONNECTION OF U-NET FOR MEDICAL IMAGE SEGMENTATION
+## Pytorch implement of U-Net v2: RETHINKING THE SKIP CONNECTION OF U-NET FOR MEDICAL IMAGE SEGMENTATION
 
 Please make sure you have installed all the packages with the correct versions as shown in requirements.txt. Most of the issues are caused by incompatible package versions.
 
