@@ -22,6 +22,8 @@ run the training and testing using the following command:
 python /path/to/U-Net_v2/run/run_training.py dataset_id 2d 0 --no-debug -tr ISICTrainer --c
 ```
 
+The `nnUNet` preprocessed data can be downloaded from [ISIC 2017](https://drive.google.com/drive/folders/1Q8VQXhQd5T4Z7kS2SnqygedtYSJSSN75?usp=sharing) and [ISIC 2018](https://drive.google.com/drive/folders/1LMJsdvGDEYRJbX3XQAcjYuOIYhlhvtQF?usp=drive_link)
+
 ### 2. Polyp segmentation
 
 Download the training dataset from [google drive](https://drive.google.com/file/d/1YiGHLw4iTvKdvbT6MgwO9zcCv8zJ_Bnb/view?usp=sharing) and testing dataset from [google drive](https://drive.google.com/file/d/1Y2z7FD5p5y31vkZwQQomXFRB0HutHyao/view?usp=sharing)
@@ -42,7 +44,7 @@ from unet_v2.UNet_v2 import *
 
 n_classes=2
 pretrained_path="/path/to/pretrained/pvt"
-model = UNetV2(n_classes=, deep_supervision=True, pretrained_path=pretrained_path)
+model = UNetV2(n_classes=n_classes, deep_supervision=True, pretrained_path=pretrained_path)
 
 x = torch.rand((2, 3, 256, 256))
 
@@ -50,7 +52,7 @@ ys = model(x)  # ys is a list because of deep supervision
 
 ```
 
-Next you can use `ys` and `label` to compute the loss and do back-propagation.
+Now you can use `ys` and `label` to compute the loss and do back-propagation.
 
 In the testing phase:
 
@@ -65,4 +67,4 @@ print(y.shape)  # (2, n_classes, 256, 256)
 pred = torch.argmax(y, dim=1)
 ```
 
-for convience, the `U-Net v2` model file is copied to `./lib/UNet_v2.py`
+for convience, the `U-Net v2` model file has been copied to `./unet_v2/UNet_v2.py`
