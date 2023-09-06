@@ -139,7 +139,7 @@ class UNetV2(nn.Module):
         self.sdi_4 = SDI(channel)
 
         self.seg_outs = nn.ModuleList([
-            nn.Conv2d(32, n_classes, 1, 1)] * 4)
+            nn.Conv2d(channel, n_classes, 1, 1)] * 4)
 
         self.deconv2 = nn.ConvTranspose2d(channel, channel, kernel_size=4, stride=2, padding=1,
                                           bias=False)
