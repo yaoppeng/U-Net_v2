@@ -31,7 +31,7 @@ run the training and testing using the following command:
 python /path/to/U-Net_v2/PolypSeg/Train.py
 ```
 
-### 4. On your own data
+### 3. On your own data
 
 The following code snippet shows how to use `U-Net v2` in training and testing.
 
