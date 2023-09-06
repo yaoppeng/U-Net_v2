@@ -22,7 +22,7 @@ run the training and testing using the following command:
 python /path/to/U-Net_v2/run/run_training.py dataset_id 2d 0 --no-debug -tr ISICTrainer --c
 ```
 
-The `nnUNet` preprocessed data can be downloaded from [ISIC 2017](https://drive.google.com/drive/folders/1Q8VQXhQd5T4Z7kS2SnqygedtYSJSSN75?usp=sharing) and [ISIC 2018](https://drive.google.com/drive/folders/1LMJsdvGDEYRJbX3XQAcjYuOIYhlhvtQF?usp=drive_link)
+The `nnUNet` preprocessed data can be downloaded from [ISIC 2017]([https://drive.google.com/drive/folders/1Q8VQXhQd5T4Z7kS2SnqygedtYSJSSN75?usp=sharing](https://drive.google.com/drive/folders/1Q8VQXhQd5T4Z7kS2SnqygedtYSJSSN75?usp=sharing)) and [ISIC 2018]([https://drive.google.com/drive/folders/1LMJsdvGDEYRJbX3XQAcjYuOIYhlhvtQF?usp=drive_link](https://drive.google.com/drive/folders/1LMJsdvGDEYRJbX3XQAcjYuOIYhlhvtQF?usp=sharing))
 
 ### 2. Polyp segmentation
 
