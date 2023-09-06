@@ -31,4 +31,38 @@ run the training and testing using the following command:
 python /path/to/U-Net_v2/PolypSeg/Train.py
 ```
 
+### 4. On your own data
+
+The following code snippet shows how to use `U-Net v2` in training and testing.
+
+For training:
+
+```python
+from unet_v2.UNet_v2 import *
+
+n_classes=2
+pretrained_path="/path/to/pretrained/pvt"
+model = UNetV2(n_classes=, deep_supervision=True, pretrained_path=pretrained_path)
+
+x = torch.rand((2, 3, 256, 256))
+
+ys = model(x)  # ys is a list because of deep supervision
+
+```
+
+Next you can use `ys` and `label` to compute the loss and do back-propagation.
+
+In the testing phase:
+
+```python
+model.eval()
+model.deep_supervision = False
+
+x = torch.rand((2, 3, 256, 256))
+y = model(x)  # y is a tensor since the deep supervision is turned off in the testing phase
+print(y.shape)  # (2, n_classes, 256, 256)
+
+pred = torch.argmax(y, dim=1)
+```
+
 for convience, the `U-Net v2` model file is copied to `./lib/UNet_v2.py`
