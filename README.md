@@ -7,7 +7,7 @@ Please make sure you have installed all the packages with the correct versions a
 The pretrained PVT model: [google drive](https://drive.google.com/drive/folders/1Eu8v9vMRvt-dyCH0XSV2i77lAd62nPXV)
 ### 1 ISIC segmentation
 
-Down the dataset from [google drive](https://drive.google.com/file/d/1XM10fmAXndVLtXWOt5G0puYSQyI2veWy/view?usp=sharing)
+Download the dataset from [google drive](https://drive.google.com/file/d/1XM10fmAXndVLtXWOt5G0puYSQyI2veWy/view?usp=sharing)
 
 set the nnUNet_raw, nnUNet_preprocessed and nnUNet_results environment variable using the following command:
 
