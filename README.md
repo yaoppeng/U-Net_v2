@@ -1,8 +1,8 @@
-### nnUNet is the GOAT! Thanks to Fabian et al. for making pure U-Net great again. Less is more.
+## Pytorch implementation of U-Net v2: RETHINKING THE SKIP CONNECTION OF U-NET FOR MEDICAL IMAGE SEGMENTATION
 
-## Pytorch implement of U-Net v2: RETHINKING THE SKIP CONNECTION OF U-NET FOR MEDICAL IMAGE SEGMENTATION
+#### nnUNet is the GOAT! Thanks to Fabian et al. for making pure U-Net great again. Less is more.
 
-Please make sure you have installed all the packages with the correct versions as shown in requirements.txt. Most of the issues are caused by incompatible package versions.
+Please make sure you have installed all the packages with the correct versions as shown in `requirements.txt`. Most of the issues are caused by incompatible package versions.
 
 The pretrained PVT model: [google drive](https://drive.google.com/drive/folders/1Eu8v9vMRvt-dyCH0XSV2i77lAd62nPXV)
 ### 1 ISIC segmentation
