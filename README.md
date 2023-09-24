@@ -21,7 +21,11 @@ Please make sure you have installed all the packages with the correct versions a
 >>>>>>> cdfc9bb (Update README.md)
 ### 1 ISIC segmentation
 
+<<<<<<< HEAD
 Down the dataset from ![google drive](https://drive.google.com/file/d/1XM10fmAXndVLtXWOt5G0puYSQyI2veWy/view?usp=sharing)
+=======
+Download the dataset from [google drive](https://drive.google.com/file/d/1XM10fmAXndVLtXWOt5G0puYSQyI2veWy/view?usp=sharing)
+>>>>>>> 6ae9fd8 (Update README.md)
 
 set the nnUNet_raw, nnUNet_preprocessed and nnUNet_results environment variable using the following command:
 
