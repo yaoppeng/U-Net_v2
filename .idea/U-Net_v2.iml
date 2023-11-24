@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="jdk" jdkName="python38" jdkType="Python SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="PraNet" />
+    <orderEntry type="module" module-name="RetiFluidNet" />
+    <orderEntry type="module" module-name="DconnNet" />
+    <orderEntry type="module" module-name="MRI_AI" />
+    <orderEntry type="module" module-name="3D-Convs-for-MRI-Classification" />
+    <orderEntry type="module" module-name="DK_Topology_PCR" />
+    <orderEntry type="module" module-name="DukeBreastTumor" />
+    <orderEntry type="module" module-name="BreastClassification" />
+    <orderEntry type="module" module-name="TopoClassification" />
+    <orderEntry type="module" module-name="CBIS-DDSM" />
+    <orderEntry type="module" module-name="UACANet" />
+    <orderEntry type="module" module-name="Polyp-PVT" />
+    <orderEntry type="module" module-name="Polyp-PVT_2" />
+    <orderEntry type="module" module-name="EGE-UNet" />
+    <orderEntry type="module" module-name="pytorch" />
+    <orderEntry type="module" module-name="Segmentation" />
+    <orderEntry type="module" module-name="segmentation_models.pytorch" />
+  </component>
+</module>
