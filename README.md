@@ -48,3 +48,68 @@ run the training and testing using the following command:
 ```bash
 python /path/to/UNet_v2/PolypSeg/Train.py
 ```
+<<<<<<< HEAD
+=======
+
+<<<<<<< HEAD
+=======
+### 4. On your own data
+
+I only used the 4× downsampled results on my dataset. You may need to modify the code:
+
+```
+f1, f2, f3, f4, f5, f6 = self.encoder(x)
+
+...
+f61 = self.sdi_6([f1, f2, f3, f4, f5, f6], f6)
+f51 = self.sdi_5([f1, f2, f3, f4, f5, f6], f5)
+f41 = self.sdi_4([f1, f2, f3, f4, f5, f6], f4)
+f31 = self.sdi_3([f1, f2, f3, f4, f5, f6], f3)
+f21 = self.sdi_2([f1, f2, f3, f4, f5, f6], f2)
+f11 = self.sdi_1([f1, f2, f3, f4, f5, f6], f1)
+```
+
+and delete the following code:
+
+```
+for i, o in enumerate(seg_outs):
+    seg_outs[i] = F.interpolate(o, scale_factor=4, mode='bilinear')
+```
+
+By doing this, you are using all the resoltion results rather than the 4× downsampled ones.
+
+The following code snippet shows how to use `U-Net v2` in training and testing.
+
+For training:
+
+```python
+from unet_v2.UNet_v2 import *
+
+n_classes=2
+pretrained_path="/path/to/pretrained/pvt"
+model = UNetV2(n_classes=, deep_supervision=True, pretrained_path=pretrained_path)
+
+x = torch.rand((2, 3, 256, 256))
+
+ys = model(x)  # ys is a list because of deep supervision
+
+```
+
+Next you can use `ys` and `label` to compute the loss and do back-propagation.
+
+In the testing phase:
+
+```python
+model.eval()
+model.deep_supervision = False
+
+x = torch.rand((2, 3, 256, 256))
+y = model(x)  # y is a tensor since the deep supervision is turned off in the testing phase
+print(y.shape)  # (2, n_classes, 256, 256)
+
+pred = torch.argmax(y, dim=1)
+```
+
+>>>>>>> 00f57af (Update README.md)
+for convience, the `U-Net v2` model file is copied to `./lib/UNet_v2.py`
+>>>>>>> 816bad3 ( Update README.md)
