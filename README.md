@@ -35,6 +35,29 @@ python /path/to/U-Net_v2/PolypSeg/Train.py
 
 ### 3. On your own data
 
+I only used the 4× downsampled results on my dataset. You may need to modify the code:
+
+```
+f1, f2, f3, f4, f5, f6 = self.encoder(x)
+
+...
+f61 = self.sdi_6([f1, f2, f3, f4, f5, f6], f6)
+f51 = self.sdi_5([f1, f2, f3, f4, f5, f6], f5)
+f41 = self.sdi_4([f1, f2, f3, f4, f5, f6], f4)
+f31 = self.sdi_3([f1, f2, f3, f4, f5, f6], f3)
+f21 = self.sdi_2([f1, f2, f3, f4, f5, f6], f2)
+f11 = self.sdi_1([f1, f2, f3, f4, f5, f6], f1)
+```
+
+and delete the following code:
+
+```
+for i, o in enumerate(seg_outs):
+    seg_outs[i] = F.interpolate(o, scale_factor=4, mode='bilinear')
+```
+
+By doing this, you are using all the resoltion results rather than the 4× downsampled ones.
+
 The following code snippet shows how to use `U-Net v2` in training and testing.
 
 For training:
