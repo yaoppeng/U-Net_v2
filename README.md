@@ -56,7 +56,7 @@ for i, o in enumerate(seg_outs):
     seg_outs[i] = F.interpolate(o, scale_factor=4, mode='bilinear')
 ```
 
-By doing this, you are using all the resoltion results rather than the 4× downsampled ones.
+By doing this, you are using all the resolution results rather than the 4× downsampled ones.
 
 The following code snippet shows how to use `U-Net v2` in training and testing.
 
