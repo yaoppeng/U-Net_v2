@@ -110,6 +110,27 @@ print(y.shape)  # (2, n_classes, 256, 256)
 pred = torch.argmax(y, dim=1)
 ```
 
+<<<<<<< HEAD
 >>>>>>> 00f57af (Update README.md)
+=======
+<<<<<<< HEAD
+>>>>>>> 5aa8ca0 ( Update README.md)
 for convience, the `U-Net v2` model file is copied to `./lib/UNet_v2.py`
+<<<<<<< HEAD
 >>>>>>> 816bad3 ( Update README.md)
+=======
+=======
+for convience, the `U-Net v2` model file has been copied to `./unet_v2/UNet_v2.py`
+
+### 4. Citation
+
+```
+@article{peng2023u,
+  title={U-Net v2: Rethinking the Skip Connections of U-Net for Medical Image Segmentation},
+  author={Peng, Yaopeng and Sonka, Milan and Chen, Danny Z},
+  journal={arXiv preprint arXiv:2311.17791},
+  year={2023}
+}
+```
+>>>>>>> 07b2924 (Update README.md)
+>>>>>>> 3f51285 (  Update README.md)
