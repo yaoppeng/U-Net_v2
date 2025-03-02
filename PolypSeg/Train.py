@@ -268,15 +268,15 @@ if __name__ == '__main__':
                         default=50, help='every n epochs decay learning rate')
 
     parser.add_argument('--train_path', type=str,
-                        default='/afs/crc.nd.edu/user/y/ypeng4/data/raw_data/polyp/TrainDataset',
+                        default='',
                         help='path to train dataset')
 
     parser.add_argument('--test_path', type=str,
-                        default='/afs/crc.nd.edu/user/y/ypeng4/data/raw_data/polyp/TestDataset/Kvasir',
+                        default='',
                         help='path to testing Kvasir dataset')
 
     parser.add_argument('--train_save', type=str,
-                        default='/afs/crc.nd.edu/user/y/ypeng4/Polyp-PVT_2/model_pth/')
+                        default='')
 
     opt = parser.parse_args()
     logging.basicConfig(filename='train_log.log',
@@ -288,7 +288,7 @@ if __name__ == '__main__':
     # from lib.pvt_3 import PVTNetwork
     # model = PVTNetwork().cuda()
 
-    model = UNetV2(pretrained_path="/afs/crc.nd.edu/user/y/ypeng4/latest_unetv2/U-Net_v2/PolypSeg/pvt_pth/pvt_v2_b2.pth").cuda()
+    model = UNetV2(pretrained_path="./pvt_pth/pvt_v2_b2.pth").cuda()
 
     model_name = model.__class__.__name__
     print(model.__class__.__name__.center(50, "="))
@@ -297,7 +297,7 @@ if __name__ == '__main__':
 
     wandb.login(key="66b58ac7004a123a43487d7a6cf34ebb4571a7ea")
     wandb.init(project="Polyp_ori_latest",
-               dir="/afs/crc.nd.edu/user/y/ypeng4/Polyp-PVT_2/wandb",
+               dir="./wandb",
                name=model.__class__.__name__,
                resume="allow",  # must resume, otherwise crash
                # id=id,
