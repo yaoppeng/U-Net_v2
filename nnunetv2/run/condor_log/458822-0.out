@@ -1,0 +1,12 @@
+OrderedDict([('self', <Parameter "self">), ('plans', <Parameter "plans: dict">), ('configuration', <Parameter "configuration: str">), ('fold', <Parameter "fold: int">), ('dataset_json', <Parameter "dataset_json: dict">), ('unpack_dataset', <Parameter "unpack_dataset: bool = True">), ('device', <Parameter "device: torch.device = device(type='cuda')">), ('debug', <Parameter "debug=True">), ('job_id', <Parameter "job_id=None">)])
+Using device: cuda:0
+==========================initial_lr: 0.005===========================
+2023-09-03 12:54:22.232968: I am training on qa-rtx6k-017.crc.nd.edu
+2023-09-03 12:54:22.234905: output folder: /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset124_ISIC2018/ISICTrainer__nnUNetPlans__2d/458822_my_unet_FusedMBConv_16/fold_0
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+
+WARNING: Cannot continue training because there seems to be no checkpoint available to continue from. Starting a new training...

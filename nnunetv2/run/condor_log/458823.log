@@ -1,0 +1,26 @@
+000 (458823.000.000) 09/03 13:07:56 Job submitted from host: <10.32.85.31:9618?addrs=10.32.85.31-9618&noUDP&sock=2288_f4c7_3>
+...
+001 (458823.000.000) 09/03 13:08:43 Job executing on host: <10.32.89.7:9618?addrs=10.32.89.7-9618&noUDP&sock=2328_6491_107>
+...
+006 (458823.000.000) 09/03 13:08:52 Image size of job updated: 2128908
+	426  -  MemoryUsage of job (MB)
+	435936  -  ResidentSetSize of job (KB)
+...
+006 (458823.000.000) 09/03 13:11:14 Image size of job updated: 193449920
+	5751  -  MemoryUsage of job (MB)
+	5888628  -  ResidentSetSize of job (KB)
+...
+004 (458823.000.000) 09/03 13:11:14 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 00:11:20, Sys 0 00:01:19  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	1225  -  Run Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated Assigned
+	   Cpus                 :       5.33       12        12 
+	   Disk (KB)            : 4275443    31457280  32031300 
+	   Gpus                 :       0.45        1         1 "CUDA1"
+	   Memory (MB)          :    5751       65536     65536 
+...
+001 (458823.000.000) 09/03 13:11:49 Job executing on host: <10.32.89.17:9618?addrs=10.32.89.17-9618&noUDP&sock=2276990_539a_304>
+...

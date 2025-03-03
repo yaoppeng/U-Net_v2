@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 301, in <module>
+    run_training_entry()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 295, in run_training_entry
+    run_training(args.dataset_name_or_id, args.configuration, args.fold, args.tr, args.p, args.pretrained_weights,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/run/run_training.py", line 226, in run_training
+    nnunet_trainer.run_training(dataset_id=dataset_id)
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/ISICTrainer.py", line 115, in run_training
+    self.on_train_start()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py", line 899, in on_train_start
+    self.initialize()
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py", line 284, in initialize
+    self.network, self.network_config = self.build_network_architecture(self.plans_manager, self.dataset_json,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/training/nnUNetTrainer/ISICTrainer.py", line 87, in build_network_architecture
+    return get_network_from_plans(plans_manager, dataset_json, configuration_manager,
+  File "/afs/crc.nd.edu/user/y/ypeng4/nnUNet/nnunetv2/utilities/get_network_from_plans.py", line 125, in get_network_from_plans
+    raise NotImplementedError("not implemented")
+NotImplementedError: not implemented

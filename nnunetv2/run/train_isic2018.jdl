@@ -1,0 +1,35 @@
+# Invoke Singularity
+#
+universe   = vanilla
+executable = train_isic2018.sh
+arguments = $(ClusterId)
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT_OR_EVICT
+
+Log    = condor_log/$(Cluster).log
+Output = condor_log/$(Cluster)-$(Process).out
+Error  = condor_log/$(Cluster)-$(Process).err
+
+
+# Log    = condor_log/$(Cluster).log
+# Output = condor_out/$(Cluster)-$(Process).out
+# Error  = condor_err/$(Cluster)-$(Process).err
+
+# Enable Singularity feature
+## Notre Dame Images on CVMFS
+# +SingularityImage = "/cvmfs/singularity.opensciencegrid.org/notredamedulac/el7-pytorch-gpu:latest"
+# /afs/crc.nd.edu/x86_64_linux/s/singularity/images/amber18.sif
+
+# PyTorch Image on AFS
++SingularityImage = "/afs/crc.nd.edu/x86_64_linux/s/singularity/images/pytorch-1.9.sif"
+
+request_gpus = 1
+requirements = regexp("V100 | RTX 6000", TARGET.CUDADeviceName)
+# requirements = regexp("V100", TARGET.CUDADeviceName)
+
+request_memory = 64 Gb
+request_cpus   = 12
+request_disk = 30 Gb
+
+Queue 1

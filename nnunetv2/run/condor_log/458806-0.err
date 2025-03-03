@@ -1,0 +1,36 @@
+`fused_weight_gradient_mlp_cuda` module not found. gradient accumulation fusion with weight gradient computation disabled.
+wandb: Currently logged in as: ianben. Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /afs/crc.nd.edu/user/y/ypeng4/.netrc
+wandb: wandb version 0.15.9 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.4
+wandb: Run data is saved locally in /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset123_Polyp/PolypTrainer__nnUNetPlans__2d/458806_my_unet_FusedMBConv_16/fold_0/wandb/run-20230902_023936-rwdf60ci
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run Res2Network_458806_0_lr_0.001
+wandb: ⭐️ View project at https://wandb.ai/ianben/Dataset123_0
+wandb: 🚀 View run at https://wandb.ai/ianben/Dataset123_0/runs/rwdf60ci
+/scratch365/ypeng4/software/bin/anaconda/envs/python310/lib/python3.10/site-packages/torch/nn/functional.py:3737: UserWarning: nn.functional.upsample is deprecated. Use nn.functional.interpolate instead.
+  warnings.warn("nn.functional.upsample is deprecated. Use nn.functional.interpolate instead.")
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb:           dsc/CVC-300 ▇▅▂▄▃▅▆▅▅▇▁▆▇▃▅▆▆▆▆▇▇▆▇█▇▇▇▇▇▇▇▆▆▇▇▇▇▇▇▇
+wandb:      dsc/CVC-ClinicDB ▂▁▅▅▄▃▆▅▅▅▃▄▆▅▅▇▇▆▇▇█▇▇▇▇▇▇█▇█▇█████████
+wandb:       dsc/CVC-ColonDB ▄▆▆▅▄▃▄▆▆▇▁▅▇▅▅█▇▆▇██▇▇▇██▆▇▇▇█▇▇▇▇██▇██
+wandb: dsc/ETIS-LaribPolypDB ▁▂▆▆▇▅▆▄▅█▅▇█▆▆▇▇▆▇▇█▇▇█▇▇▆█████▇▇▇█▇▇▇▇
+wandb:            dsc/Kvasir ▂▁▅▃▃▄▄▄▃█▂▆▄▄▆▇▇▄▆▅▇▆▇█▇▇▇▇█▇▇▇▆▇▇▇▇▇▇▇
+wandb:       loss/train_loss █▅▄▃▃▃▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:         loss/val_loss ▁▁▂▃▁▄▃▄▂▃▂▄▁▄▂▃▃▃▁▂▄▃▃▄▄▅▆▄▅▄▅▄▄▄▅█▇▆▅▆
+wandb: 
+wandb: Run summary:
+wandb:           dsc/CVC-300 0.88002
+wandb:      dsc/CVC-ClinicDB 0.8826
+wandb:       dsc/CVC-ColonDB 0.70568
+wandb: dsc/ETIS-LaribPolypDB 0.73231
+wandb:            dsc/Kvasir 0.89983
+wandb:       loss/train_loss -1.47281
+wandb:         loss/val_loss -0.83489
+wandb: 
+wandb: 🚀 View run Res2Network_458806_0_lr_0.001 at: https://wandb.ai/ianben/Dataset123_0/runs/rwdf60ci
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: /afs/crc.nd.edu/user/y/ypeng4/data/trained_models/Dataset123_Polyp/PolypTrainer__nnUNetPlans__2d/458806_my_unet_FusedMBConv_16/fold_0/wandb/run-20230902_023936-rwdf60ci/logs
