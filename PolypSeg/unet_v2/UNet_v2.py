@@ -66,9 +66,11 @@ class Encoder(nn.Module):
         self.backbone = pvt_v2_b2()
 
         if pretrain_path is None:
-            warnings.warn('please provide the pretrained pvt model. Not using pretrained model.'.center(100, "="))
+            warn_str = "please provide the pretrained pvt model. Not using pretrained model.".center(100, "=")
+            warnings.warn(warn_str)
         elif not os.path.isfile(pretrain_path):
-            warnings.warn(f'path: {pretrain_path} does not exists. Not using pretrained model.'.center(100, "="))
+            warn_str = f"path: {pretrain_path} does not exists. Not using pretrained model.".center(100, "=")
+            warnings.warn(warn_str)
         else:
             print(f"using pretrained file: {pretrain_path}".center(100, "="))
             save_model = torch.load(pretrain_path)

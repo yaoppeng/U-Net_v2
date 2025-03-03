@@ -268,15 +268,15 @@ if __name__ == '__main__':
                         default=50, help='every n epochs decay learning rate')
 
     parser.add_argument('--train_path', type=str,
-                        default='',
+                        default=None, required=True,
                         help='path to train dataset')
 
     parser.add_argument('--test_path', type=str,
-                        default='',
+                        default=None, required=True,
                         help='path to testing Kvasir dataset')
 
     parser.add_argument('--train_save', type=str,
-                        default='')
+                        default=None, required=True)
 
     opt = parser.parse_args()
     logging.basicConfig(filename='train_log.log',
@@ -288,7 +288,7 @@ if __name__ == '__main__':
     # from lib.pvt_3 import PVTNetwork
     # model = PVTNetwork().cuda()
 
-    model = UNetV2(pretrained_path="./pvt_pth/pvt_v2_b2.pth").cuda()
+    model = UNetV2(pretrained_path=f"{os.getcwd()}/PolypSeg/pvt_pth/pvt_v2_b2.pth").cuda()
 
     model_name = model.__class__.__name__
     print(model.__class__.__name__.center(50, "="))
