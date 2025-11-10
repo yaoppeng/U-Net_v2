@@ -6,8 +6,7 @@ Please make sure you have installed all the packages with the correct versions a
 
 The pretrained PVT model: [google drive](https://drive.google.com/drive/folders/1xC5Opwu5Afz4xiK5O9v4NnQOZY0A9-2j?usp=sharing)
 ### 1 ISIC segmentation
-
-Download the dataset from [google drive](https://drive.google.com/file/d/1XM10fmAXndVLtXWOt5G0puYSQyI2veWy/view?usp=sharing)
+The `nnUNet` preprocessed and raw data can be downloaded from [ISIC 2017](https://drive.google.com/drive/folders/1Q8VQXhQd5T4Z7kS2SnqygedtYSJSSN75?usp=sharing) and [ISIC 2018](https://drive.google.com/drive/folders/1LMJsdvGDEYRJbX3XQAcjYuOIYhlhvtQF?usp=sharing)
 
 set the nnUNet_raw, nnUNet_preprocessed and nnUNet_results environment variable using the following command:
 
@@ -22,7 +21,7 @@ run the training and testing using the following command:
 python /path/to/UNet_v2/run/run_training.py dataset_id 2d 0 --no-debug -tr ISICTrainer --c
 ```
 
-The `nnUNet` preprocessed data can be downloaded from [ISIC 2017]([https://drive.google.com/drive/folders/1Q8VQXhQd5T4Z7kS2SnqygedtYSJSSN75?usp=sharing](https://drive.google.com/drive/folders/1Q8VQXhQd5T4Z7kS2SnqygedtYSJSSN75?usp=sharing)) and [ISIC 2018]([https://drive.google.com/drive/folders/1LMJsdvGDEYRJbX3XQAcjYuOIYhlhvtQF?usp=drive_link](https://drive.google.com/drive/folders/1LMJsdvGDEYRJbX3XQAcjYuOIYhlhvtQF?usp=sharing))
+
 
 ### 2. Polyp segmentation
 
